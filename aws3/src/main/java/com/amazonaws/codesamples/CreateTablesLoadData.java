@@ -24,7 +24,12 @@ import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
 
 public class CreateTablesLoadData {
 
-    static AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().withRegion(Regions.US_EAST_1).build();
+    static BasicAWSCredentials awsCreds =
+            new BasicAWSCredentials("AKIA2CDPRTPFWVYCSNVZ", "DGCzvtDETed4xT+JBdKQz4PYyGnVgUKYUXZkuRrN");
+    static AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard()
+            .withRegion(Regions.US_EAST_1)
+            .withCredentials(new AWSStaticCredentialsProvider(awsCreds))
+            .build();
 
     static DynamoDB dynamoDB = new DynamoDB(client);
 
